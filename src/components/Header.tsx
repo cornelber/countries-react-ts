@@ -7,12 +7,12 @@ import {
   IconButton,
 } from "@material-tailwind/react";
 import { MoonIcon } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
 
 interface NavItemProps {
   href: string;
   children: React.ReactNode;
 }
-
 
 const NavItem = ({ href, children }: NavItemProps) => (
   <Typography
@@ -21,9 +21,9 @@ const NavItem = ({ href, children }: NavItemProps) => (
     color="blue-gray"
     className="flex items-center gap-x-2 md:p-1 px-4 font-medium"
   >
-    <a href={href} className="flex items-center">
+    <Link to={href} className="flex items-center">
       {children}
-    </a>
+    </Link>
   </Typography>
 );
 
@@ -42,30 +42,32 @@ export function Header() {
 
   const navList = useMemo(
     () => (
-      <ul className="pt-2 pb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 border-b-[1px] border-gray-600/20 md:border-none">
-        <NavItem href="#">Home</NavItem>
-        <NavItem href="#">Countries</NavItem>
+      <ul className="pt-2 pb-4 flex flex-col gap-2 lg:pb-0 lg:pt-0 lg:flex-row lg:items-center lg:gap-6 border-b-[1px] border-gray-600/20 md:border-none">
+        <NavItem href="/">Home</NavItem>
+        <NavItem href="/countries">Countries</NavItem>
       </ul>
     ),
     []
   );
 
   return (
-    <header className="sticky top-0 z-100 h-max bg-white">
-      <Navbar className="mx-auto max-w-screen-xl px-6 py-6 shadow-none rounded-none">
+    <header className="sticky top-0 z-100 h-max bg-white shadow-md">
+      <Navbar className="mx-auto px-6 py-6 shadow-none rounded-none">
         <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
-          <Typography
-            as="a"
-            href="#"
+          <Link
+            to="#"
             className="mr-4 cursor-pointer py-1.5 font-extrabold text-lg"
           >
             Where in the world?
-          </Typography>
+          </Link>
           <div className="hidden lg:block">{navList}</div>
           <div className="flex items-center gap-x-1">
             <Button variant="text" size="sm" className="hidden lg:inline-flex">
               <MoonIcon className="h-5 w-5" />
-              <Typography variant="small" className="font-medium ml-3 capitalize">
+              <Typography
+                variant="small"
+                className="font-medium ml-3 capitalize"
+              >
                 Dark Mode
               </Typography>
             </Button>
@@ -113,9 +115,12 @@ export function Header() {
             {navList}
             <div className="flex items-center gap-x-1 mt-4">
               <Button fullWidth variant="text" size="sm" className="flex">
-              <Typography variant="small" className="capitalize font-medium text-black mr-3">
-                Dark Mode
-              </Typography>
+                <Typography
+                  variant="small"
+                  className="capitalize font-medium text-black mr-3"
+                >
+                  Dark Mode
+                </Typography>
                 <MoonIcon className="h-5 w-5" />
               </Button>
             </div>

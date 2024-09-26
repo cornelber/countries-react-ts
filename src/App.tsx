@@ -1,11 +1,17 @@
+import { Route, Routes } from "react-router-dom"
 import { Header } from "./components/Header"
+import Home from "./pages/Home"
+import Countries from "./pages/Countries"
 
 function App() {
 
   return (
     <>
       <Header />
-      <main className="h-[3000px] bg-red-300"></main>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/countries" element={<Countries />} />
+      </Routes>
     </>
   )
 }
