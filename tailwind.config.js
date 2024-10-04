@@ -10,6 +10,9 @@ export default withMT({
     //   'lg': {'max': '1440px'},
     // },
     extend: {
+      boxShadow: {
+        'card': '0 0 7px 2px rgba(0, 0, 0, 0.1)'
+      }
   },
 },
 plugins: [],

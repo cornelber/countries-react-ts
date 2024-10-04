@@ -51,7 +51,7 @@ export function Header() {
   );
 
   return (
-    <header className="sticky top-0 z-100 h-max bg-white shadow-md">
+    <header className="sticky top-0 z-[100] h-max bg-white shadow-md">
       <Navbar className="mx-auto px-6 py-6 shadow-none rounded-none">
         <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
           <Link

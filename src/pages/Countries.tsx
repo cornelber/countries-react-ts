@@ -1,9 +1,15 @@
 import React from 'react'
 import Layout from '../layouts/Layout'
+import CountryList from '../components/CountryList'
 
 const Countries = () => {
+
+
+
   return (
-    <Layout>Countries</Layout>
+    <Layout>
+      <CountryList />
+    </Layout>
   )
 }
 
