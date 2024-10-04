@@ -4,7 +4,7 @@
 import React, { createContext } from "react";
 import { Country } from "../types/Country";
 import { useFetchData } from "../hooks/useFetchData";
-import { COUNTRIES_API_URL } from "../api/countriesApi";
+import { COUNTRIES_API_URL } from "../api/endpoints.ts";
 
 // definim tipul datelor pentru context
 interface CountriesContextType {
