@@ -1,4 +1,3 @@
-import React from 'react'
 import Layout from '../layouts/Layout'
 import heroImg from '../assets/countries-hero-img.jpg'
 import { Typography } from '@material-tailwind/react'

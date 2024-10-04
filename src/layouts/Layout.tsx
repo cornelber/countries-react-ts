@@ -6,7 +6,7 @@ interface LayoutProps {
 
 const Layout = ({children} : LayoutProps) => {
   return (
-    <main className='mt-12'>
+    <main className='my-12'>
         <div className="container mx-auto px-6">
             {children}
         </div>
