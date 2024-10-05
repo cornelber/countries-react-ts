@@ -8,15 +8,16 @@ interface CountryCardProps {
 
 const CountryCard = ({ country }: CountryCardProps) => {
   return (
-    <Link to={country.cca2}>
-        <Card className="h-80 rounded-md shadow-card">
-        <CardHeader className="relative mx-0 mt-0 rounded-t-md rounded-b-none shadow-none">
-            <img src={country.flags.png} alt={`${country.name.common} flag`} className="w-full h-40 object-cover" />
+    <Link to={`/countries/${country.cca2}`}>
+        <Card className="h-full rounded-md shadow-card flex flex-col">
+        <CardHeader className="relative mx-0 mt-0 h-40 rounded-t-md rounded-b-none shadow-none">
+            <img src={country.flags.png} alt={`${country.name.common} flag`} className="w-full h-full object-cover" />
         </CardHeader>
-        <CardBody className='p-6'>
-            <Typography variant="h5" color="blue-gray">{country.name.common}</Typography>
-            <Typography color="gray">Population: {country.population}</Typography>
-            <Typography color="gray">Capital: {country.capital?.join(", ") || "N/A"}</Typography>
+        <CardBody className='p-6 pb-12 flex flex-col justify-between flex-grow'>
+            <Typography variant="h5" color="blue-gray" className="font-extrabold text-lg pb-4">{country.name.common}</Typography>
+            <Typography color="gray" className='text-sm pb-2'><strong>Population:</strong> {country.population}</Typography>
+            <Typography color="gray" className='text-sm pb-2'><strong>Region:</strong> {country.region}</Typography>
+            <Typography color="gray" className='text-sm'><strong>Capital:</strong> {country.capital?.join(", ") || "N/A"}</Typography>
         </CardBody>
         </Card>
     </Link>

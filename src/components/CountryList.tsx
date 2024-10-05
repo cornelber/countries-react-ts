@@ -16,7 +16,7 @@ const CountryList = ({ countries, currentPage, countriesPerPage }: CountryListPr
   );
 
   return (
-    <div className="grid grid-cols-4 gap-16 gap-y-16">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-16">
         {currentCountries.map((country) => (
             <CountryCard key={country.cca2} country={country} />
         ))}
