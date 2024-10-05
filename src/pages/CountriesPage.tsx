@@ -5,15 +5,24 @@ import { useCountriesContext } from "../hooks/useCountriesContext";
 import CountriesPageSkeleton from "../components/skeleton/CountriesPageSkeleton";
 import FilterBar from "../components/FilterBar";
 import Pagination from "../components/Pagination";
+import { useFilteredCountries } from "../hooks/useFilteredCountries";
+import { usePagination } from "../hooks/usePagination";
 
-//todo: navigation with filters and pages
 const CountriesPage = () => {
   const { countries, loading, error } = useCountriesContext();
-
   const [searchTerm, setSearchTerm] = useState("");
   const [region, setRegion] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
+
+  const filteredCountries = useFilteredCountries(countries, searchTerm, region);
   const countriesPerPage = 12;
+
+  const {
+    currentPage,
+    totalPages,
+    handleNextPage,
+    handlePrevPage,
+    setCurrentPage,
+  } = usePagination(filteredCountries.length, countriesPerPage);
 
   const handleSearchChange = (value: string) => {
     setSearchTerm(value);
@@ -24,28 +33,9 @@ const CountriesPage = () => {
     setRegion(selectedRegion);
     setCurrentPage(1);
   };
-
-  const handleNextPage = () => {
-    if (currentPage < countries.length) setCurrentPage(currentPage + 1);
-  };
-
-  const handlePrevPage = () => {
-    if (currentPage > 1) setCurrentPage(currentPage - 1);
-  };
-
-  if(error) return <p>Error</p>;
-
-  const filteredCountries = countries.filter(
-    (country) =>
-      (country.name.common.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        country.name.official
-          .toLowerCase()
-          .includes(searchTerm.toLowerCase())) &&
-      (region === "" || country.region === region)
-  );
-
+  
   return (
-    <Layout>
+    <Layout error={error} >
       {loading ? (
         <CountriesPageSkeleton />
       ) : (
@@ -63,8 +53,7 @@ const CountriesPage = () => {
           />
           <Pagination
             currentPage={currentPage}
-            itemsPerPage={countriesPerPage}
-            totalItems={filteredCountries.length}
+            totalPages={totalPages}
             onNext={handleNextPage}
             onPrev={handlePrevPage}
           />
