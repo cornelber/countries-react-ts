@@ -2,14 +2,12 @@ import { Button } from '@material-tailwind/react'
 
 interface PaginationProps {
     currentPage: number;
-    itemsPerPage: number;
-    totalItems: number;
+    totalPages: number;
     onNext: () => void;
     onPrev: () => void;
 }
 
-const Pagination = ({currentPage, itemsPerPage, totalItems, onNext, onPrev} : PaginationProps) => {
-    const totalPages = Math.ceil(totalItems / itemsPerPage);
+const Pagination = ({currentPage, totalPages, onNext, onPrev} : PaginationProps) => {
 
   return (
     <div className="flex justify-center items-center mt-12 space-x-4">
