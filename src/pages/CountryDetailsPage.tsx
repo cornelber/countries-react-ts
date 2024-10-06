@@ -4,7 +4,6 @@ import CountryDetail from '../components/CountryDetail';
 import { useCountriesContext } from '../hooks/useCountriesContext';
 
 //todo: navigation
-//todo: error page
 
 const CountryDetailsPage = () => {
   const { cca2 } = useParams<{ cca2: string }>();

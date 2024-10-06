@@ -11,3 +11,16 @@
         font-size: 16px;
     }
 }
+
+html {
+    overflow-x: hidden;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+html.dark {
+    background-color: #202C36;
+}
+
+html.light {
+    background-color: #FAFAFA;
+}

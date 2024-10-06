@@ -5,18 +5,22 @@ import CountriesPage from "./pages/CountriesPage"
 import CountryDetailsPage from "./pages/CountryDetailsPage"
 import { CountriesProvider } from "./context/CountriesContext"
 import NotFoundPage from "./pages/NotFoundPage"
+import { ThemeProvider } from "./context/ThemeContext"
 
 function App() {
+  
   return (
-    <CountriesProvider>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/countries" element={<CountriesPage />} />
-        <Route path="/countries/:cca2" element={<CountryDetailsPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </CountriesProvider>
+    <ThemeProvider>
+      <CountriesProvider>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/countries" element={<CountriesPage />} />
+          <Route path="/countries/:cca2" element={<CountryDetailsPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </CountriesProvider>
+    </ThemeProvider>
   )
 }
 

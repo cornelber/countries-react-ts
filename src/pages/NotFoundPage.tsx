@@ -5,7 +5,7 @@ import { Button, Typography } from "@material-tailwind/react";
 const NotFoundPage = () => {
   return (
     <Layout>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center dark:text-white">
             <Typography
                 as="h2"
                 variant="h2"
@@ -18,7 +18,7 @@ const NotFoundPage = () => {
                 had its name changed or is temporarily unavailable.
             </Typography>
             <Link to={"/"}>
-                <Button variant="gradient" size="lg" >Go to homepage</Button>
+                <Button variant="filled" size="lg" className="dark:bg-light-dark" >Go to homepage</Button>
             </Link>
         </div>
     </Layout>

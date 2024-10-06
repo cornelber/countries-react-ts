@@ -8,9 +8,9 @@ interface LayoutProps {
 
 const Layout = ({children, error} : LayoutProps) => {
   return (
-    <main className='my-12'>
+    <main>
         {error && <ErrorMessage error={error} />}
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-6 pt-36 pb-12">
             {children}
         </div>
     </main>

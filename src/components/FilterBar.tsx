@@ -10,8 +10,8 @@ interface FilterBarProps {
 
 const FilterBar = ({searchTerm, region, onSearchChange, onRegionChange} : FilterBarProps) => {
   return (
-    <div className='mb-12 flex justify-between gap-4'>
-        <div className="max-w-80 w-full rounded-md">
+    <div className='mb-12 flex flex-col md:flex-row md:justify-between gap-4'>
+        <div className="md:max-w-80 w-full rounded-md ">
             <Input
             type="text"
             label='Search for a country...'
@@ -19,13 +19,24 @@ const FilterBar = ({searchTerm, region, onSearchChange, onRegionChange} : Filter
             onChange={(e) => onSearchChange(e.target.value)}
             crossOrigin={undefined}
             icon={<MagnifyingGlassIcon />}
+            className=' dark:bg-light-dark dark:border-light-dark dark:text-white'
+            labelProps={{
+              className: 'dark:peer-focus:text-white dark:peer-placeholder-shown:text-white dark:text-white before:border-none after:border-none'
+            }}
             />
         </div>
-        <div className='max-w-64 w-full rounded-md'>
+        <div className='max-w-64 w-full rounded-md mt-6 md:mt-0'>
         <Select
           label="Filter by Region"
           value={region}
           onChange={(value) => onRegionChange(value || "")}
+          className='dark:bg-light-dark dark:border-light-dark dark:text-white'
+          labelProps={{
+            className: 'dark:peer-focus:text-white dark:peer-placeholder-shown:text-white dark:text-white before:border-none after:border-none'
+          }}
+          menuProps={{
+            className: 'dark:bg-light-dark dark:border-none dark:text-white'
+          }}
         >
           <Option value="Africa">Africa</Option>
           <Option value="Americas">Americas</Option>

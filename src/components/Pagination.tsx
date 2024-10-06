@@ -16,11 +16,11 @@ const Pagination = ({currentPage, totalPages, onNext, onPrev} : PaginationProps)
           disabled={currentPage === 1}
           variant="outlined"
           color="blue-gray"
-          className="rounded-full"
+          className="rounded-full dark:text-white dark:border-white"
         >
           Prev
         </Button>
-        <span className="text-gray-700">
+        <span className="text-gray-700 dark:text-white dark:border-white">
           Page {currentPage} of {totalPages}
         </span>
         <Button
@@ -28,7 +28,7 @@ const Pagination = ({currentPage, totalPages, onNext, onPrev} : PaginationProps)
           disabled={currentPage === totalPages}
           variant="outlined"
           color="blue-gray"
-          className="rounded-full"
+          className="rounded-full dark:text-white dark:border-white"
         >
           Next
         </Button>
