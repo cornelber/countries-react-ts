@@ -6,8 +6,9 @@ import {
   IconButton,
   Collapse,
 } from "@material-tailwind/react";
-import { MoonIcon } from "@heroicons/react/24/outline";
+import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
+import { useTheme } from "../hooks/useTheme";
 
 interface NavItemProps {
   href: string;
@@ -19,7 +20,7 @@ const NavItem = ({ href, children }: NavItemProps) => (
     as="li"
     variant="small"
     color="blue-gray"
-    className="flex items-center gap-x-2 md:p-1 px-4 font-medium"
+    className="flex items-center gap-x-2 md:p-1 px-4 font-medium dark:text-white"
   >
     <Link to={href} className="flex items-center">
       {children}
@@ -29,6 +30,7 @@ const NavItem = ({ href, children }: NavItemProps) => (
 
 export function Header() {
   const [openBurger, setOpenBurger] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   const handleMobileNav = useCallback(() => {
     setOpenBurger(!openBurger);
@@ -42,7 +44,7 @@ export function Header() {
 
   const navList = useMemo(
     () => (
-      <ul className="pt-2 pb-4 flex flex-col gap-2 lg:pb-0 lg:pt-0 lg:flex-row lg:items-center lg:gap-6 border-b-[1px] border-gray-600/20 md:border-none">
+      <ul className="p-2 flex flex-col gap-2 lg:pb-0 lg:pt-0 lg:flex-row lg:items-center lg:gap-6 border-b-[1px] border-gray-600/20 md:border-none">
         <NavItem href="/">Home</NavItem>
         <NavItem href="/countries">Countries</NavItem>
       </ul>
@@ -51,9 +53,9 @@ export function Header() {
   );
 
   return (
-    <header className="sticky top-0 z-[100] h-max bg-white shadow-md">
-      <Navbar className="mx-auto px-6 py-6 shadow-none rounded-none">
-        <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
+    <header className="fixed w-full top-0 z-[100] h-max bg-white shadow-md dark:bg-light-dark">
+      <Navbar className="mx-auto px-6 py-6 shadow-none rounded-none bg-inherit border-none">
+        <div className="container mx-auto flex items-center justify-between text-blue-gray-900 dark:text-white">
           <Link
             to="/"
             className="mr-4 cursor-pointer py-1.5 font-extrabold text-lg"
@@ -62,18 +64,20 @@ export function Header() {
           </Link>
           <div className="hidden lg:block">{navList}</div>
           <div className="lg:ml-0 ml-auto">
-            <Button variant="text" size="sm" className="inline-flex lg:py-2 lg:px-4 p-2">
-              <MoonIcon className="h-5 w-5" />
+            <Button variant="text" size="sm" className="inline-flex lg:py-2 lg:px-4 p-2 dark:text-white" onClick={toggleTheme}>
+              {theme === 'light' ? <MoonIcon className="h-5 w-5" /> : <SunIcon className="h-5 w-5" />}
+              {/* <MoonIcon className="h-5 w-5" />
+              <SunIcon className="h-5 w-5" /> */}
               <Typography
                 variant="small"
                 className="font-medium ml-3 capitalize lg:block hidden"
               >
-                Dark Mode
+                {theme === "light" ? "Dark Mode" : "Light Mode"}
               </Typography>
             </Button>
             <IconButton
               variant="text"
-              className="ml-4 h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
+              className="ml-4 h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden dark:text-white"
               ripple={false}
               onClick={handleMobileNav}
             >
