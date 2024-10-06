@@ -1,3 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    body {
+        font-family: 'Nunito Sans', sans-serif;
+        font-weight: normal;
+        font-size: 16px;
+    }
+}
+
+html {
+    overflow-x: hidden;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+html.dark {
+    background-color: #202C36;
+}
+
+html.light {
+    background-color: #FAFAFA;
+}
