@@ -21,7 +21,7 @@ const FilterBar = ({searchTerm, region, onSearchChange, onRegionChange} : Filter
             icon={<MagnifyingGlassIcon />}
             className=' dark:bg-light-dark dark:border-light-dark dark:text-white'
             labelProps={{
-              className: 'dark:peer-focus:text-white dark:peer-placeholder-shown:text-white dark:text-white before:border-none after:border-none'
+              className: 'dark:peer-focus:text-white dark:peer-placeholder-shown:text-white dark:text-white dark:before:border-none dark:after:border-none'
             }}
             />
         </div>
@@ -32,7 +32,7 @@ const FilterBar = ({searchTerm, region, onSearchChange, onRegionChange} : Filter
           onChange={(value) => onRegionChange(value || "")}
           className='dark:bg-light-dark dark:border-light-dark dark:text-white'
           labelProps={{
-            className: 'dark:peer-focus:text-white dark:peer-placeholder-shown:text-white dark:text-white before:border-none after:border-none'
+            className: 'dark:peer-focus:text-white dark:peer-placeholder-shown:text-white dark:text-white dark:before:border-none dark:after:border-none'
           }}
           menuProps={{
             className: 'dark:bg-light-dark dark:border-none dark:text-white'
